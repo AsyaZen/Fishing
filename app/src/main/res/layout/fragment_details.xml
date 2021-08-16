@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintCircleRadius="8dp"
+    tools:context="UI.InfoFragment"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/detName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Название"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/detAdditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detName"
+            android:textSize="16sp"
+            android:text="Дополнения"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/detRegion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detLocation"
+            android:textSize="16sp"
+            android:text="Брестская область"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/detRegion"
+            android:layout_below="@+id/detLocation"
+            android:textSize="16sp"
+            tools:text="Барановичский район"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detSpLovli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detAdditions"
+            android:textSize="16sp"
+            android:text="Способы запрещенной ловли:"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/detMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detSpLovli"
+            android:textSize="16sp"
+            tools:text="запрещенный метод ловли"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detMethod"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Местоположение:"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detLoc"
+            android:textSize="16sp"
+            tools:text="Location"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

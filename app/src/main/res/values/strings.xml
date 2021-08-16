@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Fishing</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="to_first">Список</string>
+    <string name="to_second">Детали</string>
+    <string name="to_third">Карта</string>
+    <string name="to_fourth">Важно знать</string>
+    <string name="fragment_list">Список рыболовных угодий</string>
+    <string name="fragment_details">Подробности</string>
+    <string name="fragment_maps">Карта</string>
+    <string name="fragment_info">Информация для рыблова</string>
+    <string name="info1">!!!  В данный перечень не включены водные объекты, переданные в аренду для рыболовства</string>
+    <string name="info2">Сведения о них следует запрашивать в районных исполнительных комитетах или в Министерстве сельского хозяйства и продовольствия Республики Беларусь.</string>
+</resources>

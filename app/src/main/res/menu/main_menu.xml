@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ListFragment"
+        android:icon="@drawable/ic_list"
+        android:title="@string/to_first"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/MapsFragment"
+        android:icon="@drawable/ic_map"
+        android:title="@string/to_third"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/InfoFragment"
+        android:icon="@drawable/ic_info"
+        android:title="@string/to_fourth"
+        app:showAsAction="never"
+        />
+</menu>
