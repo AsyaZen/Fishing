@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     var fishList = mutableListOf<FishinGrounds>()
     lateinit var viewModel: FishinGroundsViewModel
-
-    // architecture
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
