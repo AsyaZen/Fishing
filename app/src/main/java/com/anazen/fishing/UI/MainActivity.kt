@@ -1,39 +1,26 @@
 package com.anazen.fishing
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.room.Room
+import com.anazen.fishing.LocalModel.LocalModel
+import com.anazen.fishing.Repository.Repository
+import com.anazen.fishing.ViewModel.FGViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
     var fishList = mutableListOf<FishinGrounds>()
     lateinit var viewModel: FishinGroundsViewModel
-    
+    lateinit var viewModelFactory: FGViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val db: FishinGroundsDatabase = Room.databaseBuilder(
-            applicationContext,
-            FishinGroundsDatabase::class.java,
-            "fishinGrounds"
-        )
-            .createFromAsset("fishinGrounds.db")
-            .allowMainThreadQueries()/*Открытие не в основном потоке*/
-            .build()
-
-        fishList = db.fishinGrounds().getAll() as MutableList<FishinGrounds>
-        Log.d("!!!fish", fishList.toString())
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
@@ -49,8 +36,12 @@ class MainActivity : AppCompatActivity() {
         toolbar.setupWithNavController(navController,drawer_layout)
         nav_view.setupWithNavController(navController)
 
-        viewModel = ViewModelProvider(this).get(FishinGroundsViewModel::class.java)
-        viewModel.fishinGroundsLife.postValue(fishList)
+        val localModel = LocalModel(this)
+        var repository = Repository(localModel)
 
+        viewModelFactory = FGViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(FishinGroundsViewModel::class.java)
+        viewModel.repository = repository
     }
 }

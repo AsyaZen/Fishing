@@ -6,5 +6,5 @@ import androidx.room.Query
 @Dao
 interface FishinGroundsDao {
     @Query( "SElECT*FROM fishinGrounds")
-    fun getAll():List<FishinGrounds>
+    suspend fun getAll():MutableList<FishinGrounds>
 }

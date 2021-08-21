@@ -11,19 +11,27 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anazen.fishing.LocalModel.LocalModel
+import com.anazen.fishing.Repository.Repository
+import com.anazen.fishing.ViewModel.FGViewModelFactory
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
 
     lateinit var navController: NavController
     lateinit var viewModel: FishinGroundsViewModel
+    lateinit var viewModelFactory: FGViewModelFactory
+    lateinit var repository: Repository
     lateinit var adapter: MyAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(activity as MainActivity).get(FishinGroundsViewModel::class.java)
+        repository = Repository(localModel = LocalModel(requireContext()))
+        viewModelFactory = FGViewModelFactory(repository)
+        viewModel = ViewModelProvider(activity as MainActivity, viewModelFactory)
+            .get(FishinGroundsViewModel::class.java)
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
@@ -35,10 +43,11 @@ class ListFragment : Fragment() {
         adapter = MyAdapter(viewModel.fishinGroundsLife.value!!, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(activity as MainActivity)
+        viewModel.getAll()
 
         viewModel.fishinGroundsLife.observe(activity as MainActivity, Observer {
             Log.d("!!!",it.toString())
-            var flNew = mutableListOf<FishinGrounds>()
+            val flNew = mutableListOf<FishinGrounds>()
             for(fg in it) {
                 if (fg.latitude != null && fg.longitude !=null) {
                     flNew.add(fg)
